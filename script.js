@@ -152,6 +152,9 @@ if (commandInput) {
 document.addEventListener('DOMContentLoaded', () => {
     initTerminal();
     
+    // Load admin content if available
+    loadAdminContent();
+    
     // Initialize course navigation if on tutorial page
     if (window.location.pathname.includes('tutorial.html')) {
         initializeCourseNavigation();
@@ -1961,29 +1964,38 @@ function openSection(sectionName) {
     console.log(`Opening section: ${sectionName}`);
 }
 
-// Initialize everything when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-    // Initialize terminal if it exists on the page
-    if (terminalOutput) {
-        initTerminal();
+// Load admin-saved content and override tutorial functions
+function loadAdminContent() {
+    // Check if we're on the tutorial page
+    if (!window.location.pathname.includes('tutorial.html')) {
+        return;
     }
     
-    // Initialize course navigation if on tutorial page
-    if (window.location.pathname.includes('tutorial.html')) {
-        initializeCourseNavigation();
-    }
+    // List of all lesson IDs
+    const lessonIds = [
+        'linux-history', 'distributions', 'package-managers-intro',
+        'pwd', 'cd', 'ls', 'tree', 'file', 'stat',
+        'mkdir', 'touch', 'rm', 'mv', 'cp', 'find',
+        'cat', 'grep', 'sed', 'awk',
+        'ps', 'top', 'df', 'free',
+        'whoami', 'who', 'sudo', 'chmod',
+        'ping', 'netstat', 'ssh', 'wget',
+        'cron', 'systemctl', 'journalctl', 'bash-scripting'
+    ];
     
-    // Add smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+    // Override each tutorial function with saved content
+    lessonIds.forEach(lessonId => {
+        const saved = localStorage.getItem(`lesson_${lessonId}`);
+        if (saved) {
+            const savedData = JSON.parse(saved);
+            const functionName = `get${lessonId.charAt(0).toUpperCase() + lessonId.slice(1)}Content`;
+            
+            // Create a new function that returns the saved content
+            if (window[functionName]) {
+                window[functionName] = function() {
+                    return savedData.content;
+                };
             }
-        });
+        }
     });
-}); 
+} 

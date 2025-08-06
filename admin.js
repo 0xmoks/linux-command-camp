@@ -6,6 +6,7 @@ let lessonData = {};
 document.addEventListener('DOMContentLoaded', function() {
     loadLessonList();
     initializeEventListeners();
+    loadSavedData();
 });
 
 // Load the list of lessons
@@ -133,6 +134,14 @@ function loadLessonData(lessonId) {
         content = contentFunction();
     }
     
+    // Check if we have saved data for this lesson
+    const saved = localStorage.getItem(`lesson_${lessonId}`);
+    if (saved) {
+        const savedData = JSON.parse(saved);
+        content = savedData.content || content;
+        youtubeUrl = savedData.youtubeUrl || youtubeUrl;
+    }
+    
     // Store lesson data
     lessonData[lessonId] = {
         content: content,
@@ -212,7 +221,7 @@ function displayEditor(lessonId) {
     });
 }
 
-// Save lesson data
+// Save lesson data and update tutorial functions
 function saveLesson() {
     if (!currentLesson) return;
     
@@ -225,14 +234,19 @@ function saveLesson() {
         content: contentInput.value
     };
     
-    // Show success message
-    showStatus('Changes saved successfully!', 'success');
-    
-    // In a real application, you would save this to a database or file
-    console.log('Saving lesson data:', lessonData[currentLesson]);
-    
-    // For now, we'll store in localStorage as a demo
+    // Save to localStorage
     localStorage.setItem(`lesson_${currentLesson}`, JSON.stringify(lessonData[currentLesson]));
+    
+    // Show success message
+    showStatus('Changes saved successfully! Tutorial content will be updated when users visit the tutorial page.', 'success');
+    
+    console.log('Saving lesson data:', lessonData[currentLesson]);
+}
+
+// Update the tutorial function with new content
+function updateTutorialFunction(lessonId, content, youtubeUrl) {
+    // This function is no longer needed as we use localStorage approach
+    console.log('Content saved to localStorage for lesson:', lessonId);
 }
 
 // Show status message
@@ -248,14 +262,10 @@ function showStatus(message, type) {
     }, 3000);
 }
 
-// Load saved data from localStorage (for demo purposes)
+// Load saved data from localStorage
 function loadSavedData() {
-    Object.keys(lessonData).forEach(lessonId => {
-        const saved = localStorage.getItem(`lesson_${lessonId}`);
-        if (saved) {
-            lessonData[lessonId] = JSON.parse(saved);
-        }
-    });
+    // This will be called on page load to restore any saved data
+    console.log('Loading saved lesson data...');
 }
 
 // Export lesson data (for backup/transfer)
@@ -277,7 +287,14 @@ function importLessonData(file) {
         try {
             const importedData = JSON.parse(e.target.result);
             Object.assign(lessonData, importedData);
-            showStatus('Lesson data imported successfully!', 'success');
+            
+            // Save all imported data to localStorage
+            Object.keys(importedData).forEach(lessonId => {
+                const data = importedData[lessonId];
+                localStorage.setItem(`lesson_${lessonId}`, JSON.stringify(data));
+            });
+            
+            showStatus('Lesson data imported successfully! Changes will apply when users visit the tutorial page.', 'success');
         } catch (error) {
             showStatus('Error importing data: ' + error.message, 'error');
         }
