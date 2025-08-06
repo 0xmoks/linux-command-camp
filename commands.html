@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Reference - Command Camp</title>
+    <meta name="description" content="Quick reference for essential Linux commands. Learn file management, text processing, system administration, and more.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-terminal"></i>
+                    <span>Command Camp</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="tutorial.html" class="nav-link">Tutorials</a></li>
+                    <li><a href="commands.html" class="nav-link active">Commands</a></li>
+                    <li><a href="security-lab.html" class="nav-link">Practice Lab</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Commands Section -->
+        <section id="commands" class="commands">
+            <div class="container">
+                <h2 class="section-title">Essential Commands</h2>
+                <p class="section-subtitle">Quick reference for the most important Linux commands</p>
+                
+                <div class="commands-grid">
+                    <div class="command-category">
+                        <h3><i class="fas fa-folder"></i> File Management</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>ls</code>
+                                <span>List directory contents</span>
+                            </div>
+                            <div class="command-item">
+                                <code>cd</code>
+                                <span>Change directory</span>
+                            </div>
+                            <div class="command-item">
+                                <code>pwd</code>
+                                <span>Print working directory</span>
+                            </div>
+                            <div class="command-item">
+                                <code>cp</code>
+                                <span>Copy files and directories</span>
+                            </div>
+                            <div class="command-item">
+                                <code>mv</code>
+                                <span>Move/rename files</span>
+                            </div>
+                            <div class="command-item">
+                                <code>rm</code>
+                                <span>Remove files</span>
+                            </div>
+                            <div class="command-item">
+                                <code>mkdir</code>
+                                <span>Create directories</span>
+                            </div>
+                            <div class="command-item">
+                                <code>touch</code>
+                                <span>Create empty files</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="command-category">
+                        <h3><i class="fas fa-search"></i> Search & Text</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>grep</code>
+                                <span>Search text patterns</span>
+                            </div>
+                            <div class="command-item">
+                                <code>find</code>
+                                <span>Find files by criteria</span>
+                            </div>
+                            <div class="command-item">
+                                <code>cat</code>
+                                <span>Display file contents</span>
+                            </div>
+                            <div class="command-item">
+                                <code>less</code>
+                                <span>View files page by page</span>
+                            </div>
+                            <div class="command-item">
+                                <code>head</code>
+                                <span>Show first lines</span>
+                            </div>
+                            <div class="command-item">
+                                <code>tail</code>
+                                <span>Show last lines</span>
+                            </div>
+                            <div class="command-item">
+                                <code>sed</code>
+                                <span>Stream editor for text</span>
+                            </div>
+                            <div class="command-item">
+                                <code>awk</code>
+                                <span>Text processing tool</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="command-category">
+                        <h3><i class="fas fa-cogs"></i> System Info</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>ps</code>
+                                <span>Process status</span>
+                            </div>
+                            <div class="command-item">
+                                <code>top</code>
+                                <span>System monitor</span>
+                            </div>
+                            <div class="command-item">
+                                <code>df</code>
+                                <span>Disk space usage</span>
+                            </div>
+                            <div class="command-item">
+                                <code>du</code>
+                                <span>Directory space usage</span>
+                            </div>
+                            <div class="command-item">
+                                <code>free</code>
+                                <span>Memory usage</span>
+                            </div>
+                            <div class="command-item">
+                                <code>uname</code>
+                                <span>System information</span>
+                            </div>
+                            <div class="command-item">
+                                <code>uptime</code>
+                                <span>System uptime</span>
+                            </div>
+                            <div class="command-item">
+                                <code>lscpu</code>
+                                <span>CPU information</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="command-category">
+                        <h3><i class="fas fa-users"></i> User Management</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>whoami</code>
+                                <span>Current user</span>
+                            </div>
+                            <div class="command-item">
+                                <code>who</code>
+                                <span>Logged in users</span>
+                            </div>
+                            <div class="command-item">
+                                <code>sudo</code>
+                                <span>Run as superuser</span>
+                            </div>
+                            <div class="command-item">
+                                <code>su</code>
+                                <span>Switch user</span>
+                            </div>
+                            <div class="command-item">
+                                <code>passwd</code>
+                                <span>Change password</span>
+                            </div>
+                            <div class="command-item">
+                                <code>chmod</code>
+                                <span>Change permissions</span>
+                            </div>
+                            <div class="command-item">
+                                <code>chown</code>
+                                <span>Change ownership</span>
+                            </div>
+                            <div class="command-item">
+                                <code>groups</code>
+                                <span>Show user groups</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="command-category">
+                        <h3><i class="fas fa-network-wired"></i> Network</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>ping</code>
+                                <span>Test network connectivity</span>
+                            </div>
+                            <div class="command-item">
+                                <code>netstat</code>
+                                <span>Network statistics</span>
+                            </div>
+                            <div class="command-item">
+                                <code>ssh</code>
+                                <span>Secure shell connection</span>
+                            </div>
+                            <div class="command-item">
+                                <code>wget</code>
+                                <span>Download files</span>
+                            </div>
+                            <div class="command-item">
+                                <code>curl</code>
+                                <span>Transfer data from URLs</span>
+                            </div>
+                            <div class="command-item">
+                                <code>ifconfig</code>
+                                <span>Network interface config</span>
+                            </div>
+                            <div class="command-item">
+                                <code>ip</code>
+                                <span>IP routing and addresses</span>
+                            </div>
+                            <div class="command-item">
+                                <code>nslookup</code>
+                                <span>DNS lookup</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="command-category">
+                        <h3><i class="fas fa-tools"></i> System Control</h3>
+                        <div class="command-list">
+                            <div class="command-item">
+                                <code>systemctl</code>
+                                <span>Service management</span>
+                            </div>
+                            <div class="command-item">
+                                <code>journalctl</code>
+                                <span>System logs</span>
+                            </div>
+                            <div class="command-item">
+                                <code>cron</code>
+                                <span>Scheduled tasks</span>
+                            </div>
+                            <div class="command-item">
+                                <code>kill</code>
+                                <span>Terminate processes</span>
+                            </div>
+                            <div class="command-item">
+                                <code>killall</code>
+                                <span>Kill processes by name</span>
+                            </div>
+                            <div class="command-item">
+                                <code>shutdown</code>
+                                <span>Shutdown system</span>
+                            </div>
+                            <div class="command-item">
+                                <code>reboot</code>
+                                <span>Restart system</span>
+                            </div>
+                            <div class="command-item">
+                                <code>exit</code>
+                                <span>Exit current shell</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Terminal Section -->
+        <section class="interactive-terminal">
+            <div class="container">
+                <h2 class="section-title">Practice Terminal</h2>
+                <p class="section-subtitle">Try out commands in our interactive terminal simulator</p>
+                
+                <div class="terminal-simulator">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn-red"></span>
+                            <span class="btn-yellow"></span>
+                            <span class="btn-green"></span>
+                        </div>
+                        <span class="terminal-title">Practice Terminal</span>
+                    </div>
+                    <div class="terminal-body" id="terminal-output">
+                        <div class="terminal-line">
+                            <span class="prompt">user@linux:~$</span>
+                            <span class="command" id="current-command"></span>
+                        </div>
+                    </div>
+                    <div class="terminal-input">
+                        <span class="prompt">user@linux:~$</span>
+                        <input type="text" id="command-input" placeholder="Type a command..." autocomplete="off">
+                    </div>
+                </div>
+                
+                <div class="terminal-help">
+                    <h4>Try these commands:</h4>
+                    <div class="help-commands">
+                        <button class="help-cmd" onclick="tryCommand('ls')">ls</button>
+                        <button class="help-cmd" onclick="tryCommand('pwd')">pwd</button>
+                        <button class="help-cmd" onclick="tryCommand('whoami')">whoami</button>
+                        <button class="help-cmd" onclick="tryCommand('date')">date</button>
+                        <button class="help-cmd" onclick="tryCommand('clear')">clear</button>
+                        <button class="help-cmd" onclick="tryCommand('echo hello')">echo</button>
+                        <button class="help-cmd" onclick="tryCommand('ps')">ps</button>
+                        <button class="help-cmd" onclick="tryCommand('df')">df</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-terminal"></i> Command Camp</h3>
+                    <p>Master the Linux terminal with our comprehensive 9-section training program and interactive guides.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="tutorial.html">Tutorials</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://www.gnu.org/software/bash/" target="_blank">Bash Documentation</a></li>
+                        <li><a href="https://www.linux.org/" target="_blank">Linux.org</a></li>
+                        <li><a href="https://www.kernel.org/" target="_blank">Linux Kernel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Command Camp by James Oralde.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 

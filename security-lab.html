@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Analysis Lab - Command Camp</title>
+    <meta name="description" content="Test your Linux command skills with real-world cybersecurity and admin scenarios. Practice grep, awk, sed, and more on realistic log files.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .security-lab {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .lab-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .lab-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .lab-title {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #ff6b35, #f7931e, #ff6b35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .lab-subtitle {
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            margin-bottom: 1rem;
+        }
+
+        .lab-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .lab-divider {
+            color: #666;
+            font-weight: bold;
+        }
+
+        .lab-info {
+            color: #b0b0b0;
+            font-style: italic;
+        }
+
+        .lab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .terminal-section {
+            background: #0a0a0a;
+            border: 2px solid #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .terminal-header {
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+            color: white;
+            padding: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-body {
+            padding: 1rem;
+            min-height: 400px;
+            max-height: 600px;
+            overflow-y: auto;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        .log-content {
+            color: #00ff00;
+            white-space: pre-wrap;
+            font-size: 0.8rem;
+        }
+
+        .command-input {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding: 0.5rem;
+            background: #1a1a1a;
+            border-radius: 5px;
+        }
+
+        .prompt {
+            color: #00ff00;
+            font-weight: bold;
+        }
+
+        .command-field {
+            flex: 1;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .challenge-section {
+            background: #1a1a1a;
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 2rem;
+        }
+
+        .challenge-title {
+            font-size: 1.5rem;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .challenge-description {
+            color: #b0b0b0;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .challenge-tasks {
+            background: #0a0a0a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .task-item {
+            color: #ffffff;
+            margin-bottom: 0.8rem;
+            padding-left: 1rem;
+            border-left: 3px solid #ff6b35;
+        }
+
+        .task-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .show-answer-btn {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #ff6b35;
+            border-radius: 5px;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            margin-top: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .show-answer-btn:hover {
+            background: #ff6b35;
+            transform: translateY(-2px);
+        }
+
+        .answer-hidden {
+            display: none;
+        }
+
+        .answer-visible {
+            display: block;
+            margin-top: 0.5rem;
+            padding: 0.5rem;
+            background: linear-gradient(135deg, #0f3460, #16213e);
+            border-radius: 5px;
+            border-left: 3px solid #00ff00;
+        }
+
+        .answer-content {
+            color: #ffffff;
+        }
+
+        .answer-content code {
+            background: #1a1a1a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            color: #00ff00;
+        }
+
+        .hint-section {
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .hint-title {
+            color: #f7931e;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .hint-content {
+            color: #b0b0b0;
+            line-height: 1.6;
+        }
+
+        .score-section {
+            background: linear-gradient(135deg, #0f3460, #16213e);
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .score-title {
+            font-size: 1.5rem;
+            color: #00ff00;
+            margin-bottom: 1rem;
+        }
+
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ff6b35;
+            margin-bottom: 1rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #00ff00, #00cc00);
+            transition: width 0.3s ease;
+        }
+
+        .role-selector {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .role-title {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 2rem;
+        }
+
+        .role-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .role-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            border: 2px solid #333;
+            border-radius: 15px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .role-btn:hover {
+            border-color: #ff6b35;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .role-btn.active {
+            border-color: #ff6b35;
+            background: linear-gradient(135deg, #0f3460, #16213e);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        .role-btn i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #ff6b35;
+        }
+
+        .role-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .role-desc {
+            font-size: 0.9rem;
+            color: #b0b0b0;
+            line-height: 1.4;
+        }
+
+        .scenario-selector {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .scenario-title {
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin-bottom: 2rem;
+        }
+
+        .scenario-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .scenario-btn {
+            padding: 1rem 1.5rem;
+            background: #333;
+            border: 2px solid #555;
+            border-radius: 8px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .scenario-btn:hover {
+            background: #ff6b35;
+            border-color: #ff6b35;
+        }
+
+        .scenario-btn.active {
+            background: #ff6b35;
+            border-color: #ff6b35;
+        }
+
+        @media (max-width: 768px) {
+            .lab-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .lab-title {
+                font-size: 2rem;
+            }
+            
+            .scenario-selector {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-terminal"></i>
+                    <span>Command Camp</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="tutorial.html" class="nav-link">Tutorials</a></li>
+                    <li><a href="commands.html" class="nav-link">Commands</a></li>
+                    <li><a href="security-lab.html" class="nav-link active">Practice Lab</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="security-lab">
+        <div class="lab-container">
+            <div class="lab-header">
+                <h1 class="lab-title">
+                    <i class="fas fa-terminal"></i>
+                    Practice Lab
+                </h1>
+                <p class="lab-subtitle">Test your Linux command skills with real-world cybersecurity and admin scenarios</p>
+                <div class="lab-links">
+                    <span class="lab-info">Choose your role: System Administrator or Cybersecurity Analyst</span>
+                </div>
+            </div>
+
+            <div class="role-selector">
+                <h3 class="role-title">Choose Your Role:</h3>
+                <div class="role-buttons">
+                    <button class="role-btn active" onclick="selectRole('admin')">
+                        <i class="fas fa-server"></i>
+                        <span class="role-name">System Administrator</span>
+                        <span class="role-desc">Monitor systems, manage resources, troubleshoot issues</span>
+                    </button>
+                    <button class="role-btn" onclick="selectRole('security')">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="role-name">Cybersecurity Analyst</span>
+                        <span class="role-desc">Detect threats, analyze logs, investigate incidents</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="scenario-selector" id="scenarioSelector" style="display: none;">
+                <h3 class="scenario-title">Select a Scenario:</h3>
+                <div class="scenario-buttons">
+                    <!-- System Admin Scenarios -->
+                    <div class="scenario-group admin-scenarios">
+                        <button class="scenario-btn" onclick="loadScenario('system-monitoring')">
+                            <i class="fas fa-chart-line"></i> System Monitoring
+                        </button>
+                        <button class="scenario-btn" onclick="loadScenario('performance-analysis')">
+                            <i class="fas fa-tachometer-alt"></i> Performance Analysis
+                        </button>
+                        <button class="scenario-btn" onclick="loadScenario('troubleshooting')">
+                            <i class="fas fa-tools"></i> Troubleshooting
+                        </button>
+                        <button class="scenario-btn" onclick="loadScenario('backup-management')">
+                            <i class="fas fa-database"></i> Backup Management
+                        </button>
+                    </div>
+                    
+                    <!-- Security Analyst Scenarios -->
+                    <div class="scenario-group security-scenarios" style="display: none;">
+                        <button class="scenario-btn" onclick="loadScenario('intrusion-detection')">
+                            <i class="fas fa-user-secret"></i> Intrusion Detection
+                        </button>
+                        <button class="scenario-btn" onclick="loadScenario('network-analysis')">
+                            <i class="fas fa-network-wired"></i> Network Analysis
+                        </button>
+                        <button class="scenario-btn" onclick="loadScenario('log-analysis')">
+                            <i class="fas fa-search"></i> Log Analysis
+                        </button>
+                        <button class="scenario-btn" onclick="loadScenario('forensics')">
+                            <i class="fas fa-microscope"></i> Digital Forensics
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-grid">
+                <div class="terminal-section" id="terminalSection" style="display: none;">
+                    <div class="terminal-header">
+                        <i class="fas fa-terminal"></i>
+                        Terminal
+                    </div>
+                    <div class="terminal-body" id="terminalOutput">
+                        <div class="log-content" id="logContent">
+                            <!-- Log content will be loaded here -->
+                        </div>
+                    </div>
+                    <div class="command-input">
+                        <span class="prompt">analyst@security-lab:~$</span>
+                        <input type="text" class="command-field" id="commandInput" placeholder="Enter your command..." onkeypress="handleCommand(event)">
+                    </div>
+                </div>
+
+                <div class="challenge-section" id="challengeSection" style="display: none;">
+                    <h2 class="challenge-title">
+                        <i class="fas fa-tasks"></i>
+                        Current Challenge
+                    </h2>
+                    <div class="challenge-description" id="challengeDescription">
+                        <!-- Challenge description will be loaded here -->
+                    </div>
+                    <div class="challenge-tasks" id="challengeTasks">
+                        <!-- Tasks will be loaded here -->
+                    </div>
+                    <div class="hint-section">
+                        <h3 class="hint-title">
+                            <i class="fas fa-lightbulb"></i>
+                            Useful Commands
+                        </h3>
+                        <div class="hint-content" id="hintContent">
+                            <!-- Hints will be loaded here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="score-section">
+                <h3 class="score-title">
+                    <i class="fas fa-trophy"></i>
+                    Your Score
+                </h3>
+                <div class="score-display" id="scoreDisplay">0/100</div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                </div>
+                <p>Complete challenges to improve your score!</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-terminal"></i> Command Camp</h3>
+                    <p>Master the Linux terminal with our comprehensive training program and security analysis lab.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="tutorial.html">Tutorials</a></li>
+                        <li><a href="commands.html">Command Reference</a></li>
+                        <li><a href="security-lab.html">Practice Lab</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://www.gnu.org/software/bash/" target="_blank">Bash Documentation</a></li>
+                        <li><a href="https://www.linux.org/" target="_blank">Linux.org</a></li>
+                        <li><a href="https://www.kernel.org/" target="_blank">Linux Kernel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Command Camp by James Oralde.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="security-lab.js"></script>
+</body>
+</html> 

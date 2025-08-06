@@ -6,7 +6,7 @@
     <title>Command Camp - Master Linux Commands</title>
     <meta name="description" content="Learn Linux commands with interactive tutorials and video guides. Perfect for beginners and advanced users.">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -18,11 +18,11 @@
                     <span>Command Camp</span>
                 </div>
                 <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#introduction" class="nav-link">Introduction</a></li>
-                    <li><a href="#camp-sections" class="nav-link">Camp Sections</a></li>
-                    <li><a href="#tutorials" class="nav-link">Tutorials</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="tutorial.html" class="nav-link">Tutorials</a></li>
+                    <li><a href="commands.html" class="nav-link">Commands</a></li>
+                    <li><a href="security-lab.html" class="nav-link">Practice Lab</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
                 </ul>
                 <div class="hamburger">
                     <span class="bar"></span>
@@ -41,8 +41,9 @@
                     <h1 class="hero-title">Welcome to Command Camp</h1>
                     <p class="hero-subtitle">Master Linux commands through our comprehensive 9-section training program. From navigation basics to advanced networking - become a terminal expert!</p>
                     <div class="hero-buttons">
-                        <a href="#camp-sections" class="btn btn-primary">Start Training</a>
-                        <a href="#tutorials" class="btn btn-secondary">Watch Tutorials</a>
+                        <a href="tutorial.html" class="btn btn-primary">Start Tutorial</a>
+                        <a href="security-lab.html" class="btn btn-secondary">Practice Lab</a>
+                        <a href="commands.html" class="btn btn-secondary">Command Reference</a>
                     </div>
                 </div>
                 <div class="hero-visual">
@@ -96,7 +97,7 @@
                             <span class="topic-tag">GNU/Linux</span>
                             <span class="topic-tag">Community Development</span>
                         </div>
-                        <button class="intro-btn" onclick="openIntroSection('history')">Start Learning</button>
+                        <a href="tutorial.html#linux-history" class="intro-btn">Start Learning</a>
                     </div>
 
                     <div class="intro-card">
@@ -111,7 +112,7 @@
                             <span class="topic-tag">Arch Family</span>
                             <span class="topic-tag">Independent Distros</span>
                         </div>
-                        <button class="intro-btn" onclick="openIntroSection('distributions')">Start Learning</button>
+                        <a href="tutorial.html#distributions" class="intro-btn">Start Learning</a>
                     </div>
 
                     <div class="intro-card">
@@ -126,443 +127,15 @@
                             <span class="topic-tag">pacman (Arch)</span>
                             <span class="topic-tag">Universal Package Managers</span>
                         </div>
-                        <button class="intro-btn" onclick="openIntroSection('package-managers')">Start Learning</button>
+                        <a href="tutorial.html#package-managers" class="intro-btn">Start Learning</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Course Content Section -->
-        <section id="course-content" class="course-content">
-            <div class="course-layout">
-                <!-- Left Content Area -->
-                <div class="content-area">
-                    <div class="content-header">
-                        <h2 id="current-section-title">🧭 Navigation Basics</h2>
-                        <p id="current-section-description">Master fundamental navigation commands to move around the file system efficiently.</p>
-                    </div>
-                    
-                    <div class="lesson-content" id="lesson-content">
-                        <!-- Content will be loaded here -->
-                        <div class="welcome-message">
-                            <h3>Welcome to Command Camp!</h3>
-                            <p>Select a lesson from the navigation panel to start learning Linux commands.</p>
-                            <div class="course-overview">
-                                <h4>Course Overview:</h4>
-                                <ul>
-                                    <li>9 comprehensive sections</li>
-                                    <li>Video tutorials for each command</li>
-                                    <li>Real-world examples and use cases</li>
-                                    <li>Interactive exams to test your knowledge</li>
-                                    <li>Hands-on practice with our terminal simulator</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Right Navigation Panel -->
-                <div class="navigation-panel">
-                    <div class="nav-header">
-                        <h3>Course Content</h3>
-                        <div class="progress-indicator">
-                            <span class="progress-text">0% Complete</span>
-                            <div class="progress-bar">
-                                <div class="progress-fill" style="width: 0%"></div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="course-sections">
-                        <!-- Introduction Section -->
-                        <div class="section-group">
-                            <h4 class="section-title">📚 Introduction</h4>
-                            <ul class="lesson-list">
-                                <li class="lesson-item" data-lesson="linux-history">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>Linux History & Philosophy</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="distributions">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>Linux Distributions</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="package-managers-intro">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>Package Managers Overview</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <!-- Navigation Section -->
-                        <div class="section-group">
-                            <h4 class="section-title">🧭 Navigation Basics</h4>
-                            <ul class="lesson-list">
-                                <li class="lesson-item" data-lesson="pwd">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>pwd - Print Working Directory</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="cd">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>cd - Change Directory</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="ls">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>ls - List Directory Contents</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="tree">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>tree - Display Directory Tree</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="file">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>file - Determine File Type</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="stat">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>stat - File Status</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item exam-item" data-lesson="navigation-exam">
-                                    <i class="fas fa-question-circle"></i>
-                                    <span>Navigation Basics Exam</span>
-                                    <div class="lesson-status">📝</div>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <!-- File Operations Section -->
-                        <div class="section-group">
-                            <h4 class="section-title">📁 File & Directory Operations</h4>
-                            <ul class="lesson-list">
-                                <li class="lesson-item" data-lesson="mkdir">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>mkdir - Make Directory</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="touch">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>touch - Create/Update Files</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="rm">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>rm - Remove Files</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="mv">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>mv - Move/Rename Files</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="cp">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>cp - Copy Files</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item" data-lesson="find">
-                                    <i class="fas fa-play-circle"></i>
-                                    <span>find - Search Files</span>
-                                    <div class="lesson-status">⏳</div>
-                                </li>
-                                <li class="lesson-item exam-item" data-lesson="file-operations-exam">
-                                    <i class="fas fa-question-circle"></i>
-                                    <span>File Operations Exam</span>
-                                    <div class="lesson-status">📝</div>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                        <!-- More sections will be added here -->
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- Tutorials Section -->
-        <section id="tutorials" class="tutorials">
-            <div class="container">
-                <h2 class="section-title">Video Tutorials</h2>
-                <p class="section-subtitle">Learn Linux commands step by step with our comprehensive video tutorials</p>
-                
-                <div class="tutorial-grid">
-                    <div class="tutorial-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="tutorial-content">
-                            <h3>Getting Started with Linux Terminal</h3>
-                            <p>Learn the basics of navigating the Linux terminal, understanding the command prompt, and essential commands for beginners.</p>
-                            <div class="tutorial-meta">
-                                <span class="duration"><i class="fas fa-clock"></i> 15:30</span>
-                                <span class="difficulty beginner">Beginner</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="tutorial-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="tutorial-content">
-                            <h3>File and Directory Management</h3>
-                            <p>Master file operations including creating, copying, moving, and deleting files and directories.</p>
-                            <div class="tutorial-meta">
-                                <span class="duration"><i class="fas fa-clock"></i> 22:15</span>
-                                <span class="difficulty beginner">Beginner</span>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="tutorial-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="tutorial-content">
-                            <h3>Text Processing and Search</h3>
-                            <p>Learn powerful text processing tools like grep, sed, awk, and find for efficient file searching and manipulation.</p>
-                            <div class="tutorial-meta">
-                                <span class="duration"><i class="fas fa-clock"></i> 28:45</span>
-                                <span class="difficulty intermediate">Intermediate</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="tutorial-card">
-                        <div class="video-container">
-                            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                                    frameborder="0" 
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                    allowfullscreen></iframe>
-                        </div>
-                        <div class="tutorial-content">
-                            <h3>System Administration Basics</h3>
-                            <p>Essential commands for system administration including user management, process control, and system monitoring.</p>
-                            <div class="tutorial-meta">
-                                <span class="duration"><i class="fas fa-clock"></i> 35:20</span>
-                                <span class="difficulty advanced">Advanced</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Commands Section -->
-        <section id="commands" class="commands">
-            <div class="container">
-                <h2 class="section-title">Essential Commands</h2>
-                <p class="section-subtitle">Quick reference for the most important Linux commands</p>
-                
-                <div class="commands-grid">
-                    <div class="command-category">
-                        <h3><i class="fas fa-folder"></i> File Management</h3>
-                        <div class="command-list">
-                            <div class="command-item">
-                                <code>ls</code>
-                                <span>List directory contents</span>
-                            </div>
-                            <div class="command-item">
-                                <code>cd</code>
-                                <span>Change directory</span>
-                            </div>
-                            <div class="command-item">
-                                <code>pwd</code>
-                                <span>Print working directory</span>
-                            </div>
-                            <div class="command-item">
-                                <code>cp</code>
-                                <span>Copy files and directories</span>
-                            </div>
-                            <div class="command-item">
-                                <code>mv</code>
-                                <span>Move/rename files</span>
-                            </div>
-                            <div class="command-item">
-                                <code>rm</code>
-                                <span>Remove files</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="command-category">
-                        <h3><i class="fas fa-search"></i> Search & Text</h3>
-                        <div class="command-list">
-                            <div class="command-item">
-                                <code>grep</code>
-                                <span>Search text patterns</span>
-                            </div>
-                            <div class="command-item">
-                                <code>find</code>
-                                <span>Find files by criteria</span>
-                            </div>
-                            <div class="command-item">
-                                <code>cat</code>
-                                <span>Display file contents</span>
-                            </div>
-                            <div class="command-item">
-                                <code>less</code>
-                                <span>View files page by page</span>
-                            </div>
-                            <div class="command-item">
-                                <code>head</code>
-                                <span>Show first lines</span>
-                            </div>
-                            <div class="command-item">
-                                <code>tail</code>
-                                <span>Show last lines</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="command-category">
-                        <h3><i class="fas fa-cogs"></i> System Info</h3>
-                        <div class="command-list">
-                            <div class="command-item">
-                                <code>ps</code>
-                                <span>Process status</span>
-                            </div>
-                            <div class="command-item">
-                                <code>top</code>
-                                <span>System monitor</span>
-                            </div>
-                            <div class="command-item">
-                                <code>df</code>
-                                <span>Disk space usage</span>
-                            </div>
-                            <div class="command-item">
-                                <code>du</code>
-                                <span>Directory space usage</span>
-                            </div>
-                            <div class="command-item">
-                                <code>free</code>
-                                <span>Memory usage</span>
-                            </div>
-                            <div class="command-item">
-                                <code>uname</code>
-                                <span>System information</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="command-category">
-                        <h3><i class="fas fa-users"></i> User Management</h3>
-                        <div class="command-list">
-                            <div class="command-item">
-                                <code>whoami</code>
-                                <span>Current user</span>
-                            </div>
-                            <div class="command-item">
-                                <code>who</code>
-                                <span>Logged in users</span>
-                            </div>
-                            <div class="command-item">
-                                <code>sudo</code>
-                                <span>Run as superuser</span>
-                            </div>
-                            <div class="command-item">
-                                <code>su</code>
-                                <span>Switch user</span>
-                            </div>
-                            <div class="command-item">
-                                <code>passwd</code>
-                                <span>Change password</span>
-                            </div>
-                            <div class="command-item">
-                                <code>chmod</code>
-                                <span>Change permissions</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Interactive Terminal Section -->
-        <section class="interactive-terminal">
-            <div class="container">
-                <h2 class="section-title">Practice Terminal</h2>
-                <p class="section-subtitle">Try out commands in our interactive terminal simulator</p>
-                
-                <div class="terminal-simulator">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="btn-red"></span>
-                            <span class="btn-yellow"></span>
-                            <span class="btn-green"></span>
-                        </div>
-                        <span class="terminal-title">Practice Terminal</span>
-                    </div>
-                    <div class="terminal-body" id="terminal-output">
-                        <div class="terminal-line">
-                            <span class="prompt">user@linux:~$</span>
-                            <span class="command" id="current-command"></span>
-                        </div>
-                    </div>
-                    <div class="terminal-input">
-                        <span class="prompt">user@linux:~$</span>
-                        <input type="text" id="command-input" placeholder="Type a command..." autocomplete="off">
-                    </div>
-                </div>
-                
-                <div class="terminal-help">
-                    <h4>Try these commands:</h4>
-                    <div class="help-commands">
-                        <button class="help-cmd" onclick="tryCommand('ls')">ls</button>
-                        <button class="help-cmd" onclick="tryCommand('pwd')">pwd</button>
-                        <button class="help-cmd" onclick="tryCommand('whoami')">whoami</button>
-                        <button class="help-cmd" onclick="tryCommand('date')">date</button>
-                        <button class="help-cmd" onclick="tryCommand('clear')">clear</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="about">
-            <div class="container">
-                <h2 class="section-title">About This Tutorial</h2>
-                <div class="about-content">
-                    <div class="about-text">
-                        <p>This Linux commands tutorial website is designed to help both beginners and experienced users master the Linux terminal. Whether you're new to Linux or looking to improve your command-line skills, our comprehensive guides and interactive tutorials will help you become proficient with essential Linux commands.</p>
-                        
-                        <h3>What You'll Learn:</h3>
-                        <ul>
-                            <li>Basic file and directory navigation</li>
-                            <li>File manipulation and text processing</li>
-                            <li>System administration commands</li>
-                            <li>User and permission management</li>
-                            <li>Advanced search and filtering techniques</li>
-                        </ul>
-                        
-                        <h3>Features:</h3>
-                        <ul>
-                            <li>Step-by-step video tutorials</li>
-                            <li>Interactive command practice</li>
-                            <li>Comprehensive command reference</li>
-                            <li>Real-world examples and use cases</li>
-                            <li>Mobile-friendly responsive design</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
     </main>
 
     <footer class="footer">
@@ -575,9 +148,9 @@
                 <div class="footer-section">
                     <h4>Quick Links</h4>
                     <ul>
-                        <li><a href="#tutorials">Video Tutorials</a></li>
-                        <li><a href="#commands">Command Reference</a></li>
-                        <li><a href="#about">About</a></li>
+                        <li><a href="tutorial.html">Tutorials</a></li>
+                        <li><a href="commands.html">Command Reference</a></li>
+                        <li><a href="about.html">About</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
@@ -590,7 +163,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Command Camp. Built with ❤️ for the Linux community.</p>
+                <p>&copy; 2025 Command Camp by James Oralde.</p>
             </div>
         </div>
     </footer>

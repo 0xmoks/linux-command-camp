@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutorials - Command Camp</title>
+    <meta name="description" content="Learn Linux commands with interactive tutorials and video guides. Perfect for beginners and advanced users.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-terminal"></i>
+                    <span>Command Camp</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="tutorial.html" class="nav-link active">Tutorials</a></li>
+                    <li><a href="commands.html" class="nav-link">Commands</a></li>
+                    <li><a href="security-lab.html" class="nav-link">Practice Lab</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="tutorial-main">
+        <!-- Course Content Section -->
+        <section id="course-content" class="course-content">
+            <div class="course-layout">
+                <!-- Left Content Area -->
+                <div class="content-area">
+                    <div class="content-header">
+                        <h2 id="current-section-title">🧭 Navigation Basics</h2>
+                        <p id="current-section-description">Master fundamental navigation commands to move around the file system efficiently.</p>
+                    </div>
+                    
+                    <div class="lesson-content" id="lesson-content">
+                        <!-- Content will be loaded here -->
+                        <div class="welcome-message">
+                            <h3>Welcome to Command Camp Tutorials!</h3>
+                            <p>Select a lesson from the navigation panel to start learning Linux commands.</p>
+                            <div class="course-overview">
+                                <h4>Course Overview:</h4>
+                                <ul>
+                                    <li>9 comprehensive sections</li>
+                                    <li>Video tutorials for each command</li>
+                                    <li>Real-world examples and use cases</li>
+                                    <li>Interactive exams to test your knowledge</li>
+                                    <li>Hands-on practice with our terminal simulator</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Navigation Panel -->
+                <div class="navigation-panel">
+                    <div class="nav-header">
+                        <h3>Course Content</h3>
+                        <div class="progress-indicator">
+                            <span class="progress-text">0% Complete</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="course-sections">
+                        <!-- Introduction Section -->
+                        <div class="section-group">
+                            <h4 class="section-title">📚 Introduction</h4>
+                            <ul class="lesson-list">
+                                <li class="lesson-item" data-lesson="linux-history">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>Linux History & Philosophy</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="distributions">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>Linux Distributions</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="package-managers-intro">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>Package Managers Overview</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Navigation Section -->
+                        <div class="section-group">
+                            <h4 class="section-title">🧭 Navigation Basics</h4>
+                            <ul class="lesson-list">
+                                <li class="lesson-item" data-lesson="pwd">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>pwd - Print Working Directory</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="cd">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>cd - Change Directory</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="ls">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>ls - List Directory Contents</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="tree">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>tree - Display Directory Tree</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="file">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>file - Determine File Type</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="stat">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>stat - File Status</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item exam-item" data-lesson="navigation-exam">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>Navigation Basics Exam</span>
+                                    <div class="lesson-status">📝</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- File Operations Section -->
+                        <div class="section-group">
+                            <h4 class="section-title">📁 File & Directory Operations</h4>
+                            <ul class="lesson-list">
+                                <li class="lesson-item" data-lesson="mkdir">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>mkdir - Make Directory</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="touch">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>touch - Create/Update Files</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="rm">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>rm - Remove Files</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="mv">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>mv - Move/Rename Files</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="cp">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>cp - Copy Files</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="find">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>find - Search Files</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item exam-item" data-lesson="file-operations-exam">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>File Operations Exam</span>
+                                    <div class="lesson-status">📝</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Text Processing Section -->
+                        <div class="section-group">
+                            <h4 class="section-title">📝 Text Processing</h4>
+                            <ul class="lesson-list">
+                                <li class="lesson-item" data-lesson="cat">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>cat - Display File Contents</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="grep">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>grep - Search Text Patterns</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="sed">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>sed - Stream Editor</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="awk">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>awk - Text Processing</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item exam-item" data-lesson="text-processing-exam">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>Text Processing Exam</span>
+                                    <div class="lesson-status">📝</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- System Information Section -->
+                        <div class="section-group">
+                            <h4 class="section-title">💻 System Information</h4>
+                            <ul class="lesson-list">
+                                <li class="lesson-item" data-lesson="ps">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>ps - Process Status</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="top">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>top - System Monitor</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="df">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>df - Disk Space</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="free">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>free - Memory Usage</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item exam-item" data-lesson="system-info-exam">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>System Information Exam</span>
+                                    <div class="lesson-status">📝</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- User Management Section -->
+                        <div class="section-group">
+                            <h4 class="section-title">👥 User Management</h4>
+                            <ul class="lesson-list">
+                                <li class="lesson-item" data-lesson="whoami">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>whoami - Current User</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="who">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>who - Logged In Users</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="sudo">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>sudo - Superuser Access</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="chmod">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>chmod - Change Permissions</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item exam-item" data-lesson="user-management-exam">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>User Management Exam</span>
+                                    <div class="lesson-status">📝</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Network Commands Section -->
+                        <div class="section-group">
+                            <h4 class="section-title">🌐 Network Commands</h4>
+                            <ul class="lesson-list">
+                                <li class="lesson-item" data-lesson="ping">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>ping - Network Connectivity</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="netstat">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>netstat - Network Statistics</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="ssh">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>ssh - Secure Shell</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="wget">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>wget - Download Files</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item exam-item" data-lesson="network-exam">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>Network Commands Exam</span>
+                                    <div class="lesson-status">📝</div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Advanced Topics Section -->
+                        <div class="section-group">
+                            <h4 class="section-title">🚀 Advanced Topics</h4>
+                            <ul class="lesson-list">
+                                <li class="lesson-item" data-lesson="cron">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>cron - Scheduled Tasks</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="systemctl">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>systemctl - Service Management</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="journalctl">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>journalctl - System Logs</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item" data-lesson="bash-scripting">
+                                    <i class="fas fa-play-circle"></i>
+                                    <span>Bash Scripting Basics</span>
+                                    <div class="lesson-status">⏳</div>
+                                </li>
+                                <li class="lesson-item exam-item" data-lesson="advanced-exam">
+                                    <i class="fas fa-question-circle"></i>
+                                    <span>Advanced Topics Exam</span>
+                                    <div class="lesson-status">📝</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3><i class="fas fa-terminal"></i> Command Camp</h3>
+                    <p>Master the Linux terminal with our comprehensive 9-section training program and interactive guides.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="commands.html">Command Reference</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="https://www.gnu.org/software/bash/" target="_blank">Bash Documentation</a></li>
+                        <li><a href="https://www.linux.org/" target="_blank">Linux.org</a></li>
+                        <li><a href="https://www.kernel.org/" target="_blank">Linux Kernel</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Command Camp by James Oralde.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html> 
